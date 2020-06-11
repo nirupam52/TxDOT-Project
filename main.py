@@ -1,4 +1,5 @@
 from dataFetch import DataFetch 
 
-dat = DataFetch.fetch("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_AADT_Annuals/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json")
+search_title = str(input("enter Feature Layer title"))
+dat = DataFetch.fetch(search_title)
 print(dat)
