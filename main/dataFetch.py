@@ -14,7 +14,7 @@ class DataFetch:
     def fetch(title):
         search_results = gis.content.search('title: {}'.format(title), 'Feature Layer')
         print(*list(enumerate(search_results)), sep='\n')
-        choice = int(input("enter the index of the reuslt you want \n"))
+        choice = int(input("enter the index of the result you want \n"))
         url = search_results[choice].layers[0]
         result = url.query( out_fields='*')
         df = result.sdf
