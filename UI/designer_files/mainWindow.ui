@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
-    <height>776</height>
+    <width>947</width>
+    <height>715</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,8 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(10, 49, 108);</string>
+       <string notr="true">background-color: rgb(10, 49, 108);
+</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
@@ -55,12 +56,12 @@
         <widget class="QFrame" name="logo_frame">
          <property name="maximumSize">
           <size>
-           <width>100</width>
+           <width>150</width>
            <height>16777215</height>
           </size>
          </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -85,6 +86,12 @@
            <widget class="QLabel" name="logo_label">
             <property name="text">
              <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap>../../../../Downloads/txdot-logo-1x1.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -290,8 +297,14 @@ background-color: rgb(11, 56, 124);</string>
         <pointsize>20</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(239, 239, 239);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="ispe_page">
        <widget class="QLabel" name="label">
@@ -317,27 +330,106 @@ background-color: rgb(11, 56, 124);</string>
        </widget>
       </widget>
       <widget class="QWidget" name="viewDb_page">
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>220</y>
-          <width>281</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>20</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>DATABSE PAGE</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QFrame" name="button_frame">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QPushButton" name="change_db_btn">
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Change DB</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="download_btn">
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+              </font>
+             </property>
+             <property name="contextMenuPolicy">
+              <enum>Qt::DefaultContextMenu</enum>
+             </property>
+             <property name="text">
+              <string>Download</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="table_frame">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QTableWidget" name="tableWidget">
+             <property name="styleSheet">
+              <string notr="true">QHeaderView::section { 
+    border: none;
+    height: 32px;
+	color:
+}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="rowCount">
+              <number>15</number>
+             </property>
+             <property name="columnCount">
+              <number>6</number>
+             </property>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <column/>
+             <column/>
+             <column/>
+             <column/>
+             <column/>
+             <column/>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="dbOP_page">
        <widget class="QLabel" name="label_3">
