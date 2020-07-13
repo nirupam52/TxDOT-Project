@@ -30,6 +30,7 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow)
         self.stackedWidget.setCurrentWidget(self.analytics_page)
     
 app = QtWidgets.QApplication(sys.argv)
+app.setStyle('Fusion')
 window = MainWindow()
 window.show()
 

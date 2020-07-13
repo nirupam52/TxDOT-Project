@@ -35,11 +35,12 @@
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>80</height>
+        <height>100</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(10, 49, 108);
+       <string notr="true">
+background-color: rgb(20, 55, 90);
 </string>
       </property>
       <property name="frameShape">
@@ -84,11 +85,17 @@
           </property>
           <item>
            <widget class="QLabel" name="logo_label">
+            <property name="maximumSize">
+             <size>
+              <width>125</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="text">
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap>../../../../Downloads/txdot-logo-1x1.png</pixmap>
+             <pixmap resource="../assets/resFile.qrc">:/images/txdot-logo-new.svg</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -233,10 +240,11 @@ font: 9pt &quot;Arial&quot;;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);
+background-color: rgb(22, 61, 100);
 font: 8pt &quot;Arial&quot;;
 font: 8pt &quot;Arial&quot;;
 color: rgb(255, 255, 255);
-background-color: rgb(11, 56, 124);</string>
+</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
@@ -355,6 +363,12 @@ background-color: rgb(11, 56, 124);</string>
              </property>
              <property name="text">
               <string>Change DB</string>
+             </property>
+             <property name="default">
+              <bool>false</bool>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -482,6 +496,8 @@ background-color: rgb(11, 56, 124);</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../assets/resFile.qrc"/>
+ </resources>
  <connections/>
 </ui>
