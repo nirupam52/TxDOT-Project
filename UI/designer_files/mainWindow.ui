@@ -281,7 +281,9 @@ font: 9pt &quot;Arial&quot;;</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(22, 63, 104);</string>
+           <string notr="true">background-color: rgb(22, 63, 104);
+color: rgb(255, 255, 255);
+font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -289,6 +291,28 @@ font: 9pt &quot;Arial&quot;;</string>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>OP 1</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="text">
+              <string>OP 2</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
@@ -353,7 +377,9 @@ font: 9pt &quot;Arial&quot;;</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(22, 63, 104);</string>
+           <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(22, 63, 104);
+font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -361,6 +387,38 @@ font: 9pt &quot;Arial&quot;;</string>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QPushButton" name="pushButton_5">
+             <property name="text">
+              <string>OP 1</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_6">
+             <property name="text">
+              <string>OP 2</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_7">
+             <property name="text">
+              <string>OP 3</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
@@ -498,7 +556,9 @@ font: 9pt &quot;Arial&quot;;</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(22, 63, 104);</string>
+           <string notr="true">color:rgb(255, 255, 255);
+background-color: rgb(22, 63, 104);
+font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -506,6 +566,28 @@ font: 9pt &quot;Arial&quot;;</string>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="text">
+              <string>OP 1</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_4">
+             <property name="text">
+              <string>OP 2</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
@@ -564,7 +646,9 @@ font: 9pt &quot;Arial&quot;;</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(22, 63, 104);</string>
+           <string notr="true">color: rgb(255, 255, 255);
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(22, 63, 104);</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -572,6 +656,48 @@ font: 9pt &quot;Arial&quot;;</string>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QPushButton" name="pushButton_8">
+             <property name="text">
+              <string>OP 1</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_9">
+             <property name="text">
+              <string>OP 2</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_10">
+             <property name="text">
+              <string>OP 3</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_11">
+             <property name="text">
+              <string>OP 4</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
