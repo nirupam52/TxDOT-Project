@@ -116,6 +116,12 @@ background-color: rgb(20, 55, 90);
        </item>
        <item>
         <widget class="QFrame" name="title_frame">
+         <property name="minimumSize">
+          <size>
+           <width>500</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>200</width>
@@ -148,7 +154,7 @@ background-color: rgb(20, 55, 90);
 font: 16pt &quot;Arial&quot;;</string>
             </property>
             <property name="text">
-             <string>ISPE TOOL</string>
+             <string>InService Performance Evaluation Tool</string>
             </property>
            </widget>
           </item>
@@ -190,7 +196,7 @@ font: 9pt &quot;Arial&quot;;</string>
           <item>
            <widget class="QPushButton" name="OP1">
             <property name="text">
-             <string>In Service Performance Evaluation</string>
+             <string>ISPE</string>
             </property>
             <property name="flat">
              <bool>true</bool>

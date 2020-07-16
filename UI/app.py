@@ -10,7 +10,7 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow)
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
         self.setWindowTitle("TxDOT ISPE Tool")
-        self.setFixedSize(900,900)
+        
         
         #stacked Widget on main window stuff 
         self.stackedWidget.setCurrentWidget(self.ispe_page)
@@ -32,6 +32,6 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow)
 app = QtWidgets.QApplication(sys.argv)
 app.setStyle('Fusion')
 window = MainWindow()
-window.show()
+window.showMaximized()
 
 app.exec_()

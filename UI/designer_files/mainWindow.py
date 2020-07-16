@@ -49,6 +49,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.logo_label)
         self.horizontalLayout.addWidget(self.logo_frame)
         self.title_frame = QtWidgets.QFrame(self.navbar)
+        self.title_frame.setMinimumSize(QtCore.QSize(500, 0))
         self.title_frame.setMaximumSize(QtCore.QSize(200, 16777215))
         self.title_frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.title_frame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -299,8 +300,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.title_label.setText(_translate("MainWindow", "ISPE TOOL"))
-        self.OP1.setText(_translate("MainWindow", "In Service Performance Evaluation"))
+        self.title_label.setText(_translate("MainWindow", "InService Performance Evaluation Tool"))
+        self.OP1.setText(_translate("MainWindow", "ISPE"))
         self.OP2.setText(_translate("MainWindow", "View Database"))
         self.OP3.setText(_translate("MainWindow", "Database Operations"))
         self.OP4.setText(_translate("MainWindow", "Analytics"))
