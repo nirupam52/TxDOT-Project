@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>947</width>
-    <height>715</height>
+    <width>1111</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -259,7 +259,7 @@ font: 9pt &quot;Arial&quot;;</string>
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="ispe_page">
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -554,7 +554,7 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
          <number>0</number>
         </property>
         <item>
-         <widget class="QFrame" name="dbOP_page_sub_op_navbar_2">
+         <widget class="QFrame" name="dbOP_page_sub_op_navbar">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -574,9 +574,9 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_6">
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="addArcgisBtn">
              <property name="text">
-              <string>OP 1</string>
+              <string>Add from ArcGIS</string>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -584,9 +584,19 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="uploadBtn">
              <property name="text">
-              <string>OP 2</string>
+              <string>Upload </string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="modifyBtn">
+             <property name="text">
+              <string>Modify</string>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -604,24 +614,28 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QLabel" name="label_2">
-           <property name="geometry">
-            <rect>
-             <x>380</x>
-             <y>200</y>
-             <width>201</width>
-             <height>71</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Database OPS</string>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QListWidget" name="tablesListWidget">
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextBrowser" name="tableDesc">
+             <property name="maximumSize">
+              <size>
+               <width>700</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -644,7 +658,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
          <number>0</number>
         </property>
         <item>
-         <widget class="QFrame" name="dbOP_page_sub_op_navbar_3">
+         <widget class="QFrame" name="analytics_page_sub_op_navbar">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -707,7 +721,7 @@ background-color: rgb(22, 63, 104);</string>
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="dbOP_content_2">
+         <widget class="QFrame" name="analytics_content">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -743,6 +757,7 @@ background-color: rgb(22, 63, 104);</string>
  </widget>
  <resources>
   <include location="../assets/resFile.qrc"/>
+  <include location="../../../../.designer/assets/resFile.qrc"/>
  </resources>
  <connections/>
 </ui>

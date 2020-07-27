@@ -5,7 +5,7 @@ from PyQt5 import QtWidgets, uic
 from designer_files.mainWindow import Ui_MainWindow
 
 
-class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow):
+class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, QtWidgets.QFileDialog, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
@@ -19,6 +19,8 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow)
         self.OP3.clicked.connect(self.showDbopPage)
         self.OP4.clicked.connect(self.showAnalyticsPage)
 
+        self.uploadBtn.clicked.connect(self.uploadFile)
+
 #functions for navbar buttons 
     def showIspePage(self):
         self.stackedWidget.setCurrentWidget(self.ispe_page)
@@ -28,7 +30,13 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow)
         self.stackedWidget.setCurrentWidget(self.dbOP_page)
     def showAnalyticsPage(self):
         self.stackedWidget.setCurrentWidget(self.analytics_page)
-    
+
+    def uploadFile(self):
+        #option = QtWidgets.QFileDialog.options()
+        file = QtWidgets.QFileDialog.getOpenFileName(self,"Select a file","default","Spreadsheet(*.csv)") # make this only csv
+        print(file)
+
+
 app = QtWidgets.QApplication(sys.argv)
 app.setStyle('Fusion')
 window = MainWindow()
