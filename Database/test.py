@@ -1,13 +1,10 @@
-import os
-import agate
-import agatesql
+import dbOps
+from sqlalchemy import create_engine
+from sqlalchemy.sql import text
 
 
-
-
-file_path = r"C:\Users\Nirupam Bidikar\Downloads\extract_public_2018_20200216205325557_64460_20180102-20190101Texas\extract_public_2018_20200216205325_charges_20180102-20180302Texas.csv"
-tab = agate.Table.from_csv(file_path)
-que = tab.to_sql_create_statement(table_name= "crashes", dialect= "mysql", db_schema= "main_database")
-print(que)
-print(type(que))
+fp = r"C:\Users\Nirupam Bidikar\Downloads\TxDOT_Guardrail_End_Treatments.csv"
+conn = dbOps.connect()
+#fp = r"C:\Users\Nirupam Bidikar\Downloads\extract_public_2018_20200216205325557_64460_20180102-20190101Texas\extract_public_2018_20200216205325_damages_20180102-20180302Texas.csv"
+dbOps.upload_file(fp, conn, "maintenance_treatments")
 
