@@ -4,6 +4,9 @@ import os
 from PyQt5 import QtWidgets, uic
 from designer_files.mainWindow import Ui_MainWindow
 
+from Database.dbOps import query
+
+
 
 class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, QtWidgets.QFileDialog, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
@@ -19,23 +22,26 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, QtWidgets.QFil
         self.OP3.clicked.connect(self.showDbopPage)
         self.OP4.clicked.connect(self.showAnalyticsPage)
 
-        self.uploadBtn.clicked.connect(self.uploadFile)
+
+        self.upload_btn.clicked.connect(self.uploadFile)
+
 
 #functions for navbar buttons 
     def showIspePage(self):
         self.stackedWidget.setCurrentWidget(self.ispe_page)
     def showViewDbPage(self):
         self.stackedWidget.setCurrentWidget(self.viewDb_page)
-    def showDbopPage(self):
-        self.stackedWidget.setCurrentWidget(self.dbOP_page)
+        query()
     def showAnalyticsPage(self):
         self.stackedWidget.setCurrentWidget(self.analytics_page)
 
+    #this method inclues upload fucntion from dbOPs and the file selection funnctionality
     def uploadFile(self):
         #option = QtWidgets.QFileDialog.options()
         file = QtWidgets.QFileDialog.getOpenFileName(self,"Select a file","default","Spreadsheet(*.csv)") # make this only csv
         print(file)
 
+    
 
 app = QtWidgets.QApplication(sys.argv)
 app.setStyle('Fusion')
