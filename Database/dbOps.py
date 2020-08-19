@@ -1,9 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.sql import text
 import pandas as pd 
-import creds
+from Database import creds
 import agate
 import agatesql
+import ast
+
 
 def connect():
     connection_str = 'mysql://{}:{}@{}:{}/{}?charset=utf8'.format(creds.uname,creds.pwd,creds.server,creds.port,creds.database)
@@ -21,14 +23,22 @@ def upload_file(file_path, connection, table_name):
     connection.execute(import_query,fp=file_path,tn=table_name) #execute file import to table
     
 def query(db_name,table_name, connection):
-    table_fetch_query = text("SELECT * FROM :tn LIMIT 30")
+    table_fetch_query = text("SELECT * FROM " + db_name + '.' + table_name + " LIMIT 30")
     columns_fetch_query = text("""SELECT `COLUMN_NAME` 
                                 FROM `INFORMATION_SCHEMA`.`COLUMNS` 
                                 WHERE `TABLE_SCHEMA`=:dn 
                                 AND `TABLE_NAME`=:tn""")
-    col_names = connection.execute(columns_fetch_query,dn=db_name,tn=table_name).fetchall()
-    result = connection.execute(table_fetch_query,tn= table_name)
-    reduced_result = result.fetchmany(30)
+    col_names = connection.execute(columns_fetch_query, dn= db_name, tn=table_name).fetchall()
+    col_names_refined = [item for t in col_names for item in t]
+    result = connection.execute(table_fetch_query)
+    reduced_result = result.fetchall()
 
-    return col_names, reduced_result
+    return col_names_refined,  reduced_result
 
+def table_names(db_name,connection):
+    tableNames_fetch_query = text("""SELECT `TABLE_NAME` 
+                                FROM `INFORMATION_SCHEMA`.`TABLES` 
+                                WHERE `TABLE_SCHEMA`=:dn""")
+    table_names = connection.execute(tableNames_fetch_query, dn=db_name).fetchall()
+    tableNames_refined = [item for t in table_names for item in t]
+    return tableNames_refined

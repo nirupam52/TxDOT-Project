@@ -23,6 +23,7 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow,
         self.OP4.clicked.connect(self.showAnalyticsPage)
 
         self.upload_btn.clicked.connect(self.uploadFile)
+        # self.change_table_btn.clicked.connect(self.change_table)
 
 #functions for navbar buttons 
     def showIspePage(self):
