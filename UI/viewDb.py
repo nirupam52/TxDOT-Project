@@ -5,28 +5,30 @@ from Database.dbOps import query,connect,upload_file,table_names
 
 
 connection = connect()
-# class tableListView(QtWidgets.QListWidget, Ui_MainWindow):
+# class tableListView(QtWidgets.QListWidget):
 #     def __init__(self):
 #         super().__init__()
 #         names = table_names("main_database",connection)     
 #         self.addItems(names)
 #         self.setWindowTitle("Tables")
 #         self.setWindowFlags(QtCore.Qt.Window)
-#         self.itemDoubleClicked.connect(loadSelected)
+#         self.itemDoubleClicked.connect(self.selectedItem)
+        
     
-#     def loadSelected(self,item):
+#     def selectedItem(self,item):
 #         tableName = item.text()
-#         cname, res = query("main_database",tableName,connection)
-#         self.tableWidget.setRowCount(len(res))
-#         self.tableWidget.setColumnCount(len(cname))
-#         self.tableWidget.setHorizontalHeaderLabels(cname)
-#         for rownum, rowdat in enumerate(res):
-#             self.tableWidget.insertRow(rownum)
-#             for colnum, coldat in enumerate(rowdat):
-#                 self.tableWidget.setItem(rownum,colnum,QtWidgets.QTableWidgetItem(str(coldat)))
+#         return tableName
+# #         cname, res = query("main_database",tableName,connection)
+# #         self.tableWidget.setRowCount(len(res))
+# #         self.tableWidget.setColumnCount(len(cname))
+# #         self.tableWidget.setHorizontalHeaderLabels(cname)
+# #         for rownum, rowdat in enumerate(res):
+# #             self.tableWidget.insertRow(rownum)
+# #             for colnum, coldat in enumerate(rowdat):
+# #                 self.tableWidget.setItem(rownum,colnum,QtWidgets.QTableWidgetItem(str(coldat)))
 
         
-class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QListWidget, QtWidgets.QMessageBox, QtWidgets.QInputDialog):
+class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QMessageBox, QtWidgets.QInputDialog, QtWidgets.QListWidget):
      #this method inclues upload fucntion from dbOPs and the file selection funnctionality
     
     def uploadFile(self):
@@ -44,6 +46,7 @@ class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QListWidge
     
     #function to fetch and set the data in the tableWidget
     def fetch_records(self,value):
+
         if value == self.tableWidget.verticalScrollBar().maximum():
             print("max reached")
             #query()
@@ -51,8 +54,23 @@ class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QListWidge
             print("max not yet reached")
     
     #function to load a different table into tableWidget
-    # def change_table(self):
-        
-    #     listview = QtWidgets.QListWidget(self)
-        
-    #     listview.show()
+    def change_table(self):
+        listview = QtWidgets.QListWidget(self)
+        listview.setWindowFlags(QtCore.Qt.Window)
+        names = table_names("main_database",connection)
+        listview.addItems(names)
+        listview.show()
+        listview.itemDoubleClicked.connect(self.listview_helper)
+
+     #helper function for change_table
+    def listview_helper(self,item):
+        tableName = item.text()
+        cname, res = query("main_database",tableName,connection)
+        self.tableWidget.setRowCount(len(res))
+        self.tableWidget.setColumnCount(len(cname))
+        self.tableWidget.setHorizontalHeaderLabels(cname)
+        for rownum, rowdat in enumerate(res):
+            self.tableWidget.insertRow(rownum)
+            for colnum, coldat in enumerate(rowdat):
+                self.tableWidget.setItem(rownum,colnum,QtWidgets.QTableWidgetItem(str(coldat)))
+
