@@ -30,14 +30,8 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow,
         self.stackedWidget.setCurrentWidget(self.ispe_page)
     def showViewDbPage(self):
         self.stackedWidget.setCurrentWidget(self.viewDb_page)
-        cname, res = query("main_database","maintenance_treatments",connection)
-        self.tableWidget.setRowCount(len(res))
-        self.tableWidget.setColumnCount(len(cname))
-        self.tableWidget.setHorizontalHeaderLabels(cname)
-        for rownum, rowdat in enumerate(res):
-            self.tableWidget.insertRow(rownum)
-            for colnum, coldat in enumerate(rowdat):
-                self.tableWidget.setItem(rownum,colnum,QtWidgets.QTableWidgetItem(str(coldat)))
+        self.showTable(tabName="crashes_charges")
+
         
         
         self.tableWidget.verticalScrollBar().valueChanged.connect(self.fetch_records)

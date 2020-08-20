@@ -5,27 +5,6 @@ from Database.dbOps import query,connect,upload_file,table_names
 
 
 connection = connect()
-# class tableListView(QtWidgets.QListWidget):
-#     def __init__(self):
-#         super().__init__()
-#         names = table_names("main_database",connection)     
-#         self.addItems(names)
-#         self.setWindowTitle("Tables")
-#         self.setWindowFlags(QtCore.Qt.Window)
-#         self.itemDoubleClicked.connect(self.selectedItem)
-        
-    
-#     def selectedItem(self,item):
-#         tableName = item.text()
-#         return tableName
-# #         cname, res = query("main_database",tableName,connection)
-# #         self.tableWidget.setRowCount(len(res))
-# #         self.tableWidget.setColumnCount(len(cname))
-# #         self.tableWidget.setHorizontalHeaderLabels(cname)
-# #         for rownum, rowdat in enumerate(res):
-# #             self.tableWidget.insertRow(rownum)
-# #             for colnum, coldat in enumerate(rowdat):
-# #                 self.tableWidget.setItem(rownum,colnum,QtWidgets.QTableWidgetItem(str(coldat)))
 
         
 class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QMessageBox, QtWidgets.QInputDialog, QtWidgets.QListWidget):
@@ -65,12 +44,17 @@ class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QMessageBo
      #helper function for change_table
     def listview_helper(self,item):
         tableName = item.text()
-        cname, res = query("main_database",tableName,connection)
+        self.showTable(tabName=tableName)
+       
+    # main function to populate table on viewDb page
+    def showTable(self,tabName):
+        cname, res = query("main_database",tabName,connection)
+        self.tableWidget.setRowCount(0)
         self.tableWidget.setRowCount(len(res))
         self.tableWidget.setColumnCount(len(cname))
         self.tableWidget.setHorizontalHeaderLabels(cname)
+        
         for rownum, rowdat in enumerate(res):
             self.tableWidget.insertRow(rownum)
             for colnum, coldat in enumerate(rowdat):
-                self.tableWidget.setItem(rownum,colnum,QtWidgets.QTableWidgetItem(str(coldat)))
-
+                self.tableWidget.setItem(rownum,colnum,QtWidgets.QTableWidgetItem(str(coldat)))        
