@@ -5,7 +5,8 @@ from Database.dbOps import query,connect,upload_file,table_names
 
 
 connection = connect()
-
+table = ""
+offset = 0
         
 class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QMessageBox, QtWidgets.QInputDialog, QtWidgets.QListWidget):
      #this method inclues upload fucntion from dbOPs and the file selection funnctionality
@@ -26,14 +27,23 @@ class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QMessageBo
     #function to fetch and set the data in the tableWidget
     def fetch_records(self,value):
 
-        if value == self.tableWidget.verticalScrollBar().maximum():
+        if value == int((self.tableWidget.verticalScrollBar().maximum())*0.6):
             print("max reached")
-            #query()
+            global offset
+            offset += 30
+            cname, res = query("main_database",table,connection,offset_val=offset)
+            currPos = self.tableWidget.rowCount()
+            for rownum, rowdat in enumerate(res):
+                self.tableWidget.insertRow(currPos+rownum-30)
+                for colnum, coldat in enumerate(rowdat):
+                    self.tableWidget.setItem(currPos+rownum-30,colnum,QtWidgets.QTableWidgetItem(str(coldat)))
         else:
-            print("max not yet reached")
+            pass
     
     #function to load a different table into tableWidget
     def change_table(self):
+        global offset
+        offset = 0
         listview = QtWidgets.QListWidget(self)
         listview.setWindowFlags(QtCore.Qt.Window)
         names = table_names("main_database",connection)
@@ -48,7 +58,10 @@ class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QMessageBo
        
     # main function to populate table on viewDb page
     def showTable(self,tabName):
+        global table
+        table = tabName
         cname, res = query("main_database",tabName,connection)
+        self.table = tabName
         self.tableWidget.setRowCount(0)
         self.tableWidget.setRowCount(len(res))
         self.tableWidget.setColumnCount(len(cname))
