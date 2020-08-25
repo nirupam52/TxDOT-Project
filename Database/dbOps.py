@@ -22,15 +22,15 @@ def upload_file(file_path, connection, table_name):
     import_query = text("LOAD DATA LOCAL INFILE :fp INTO TABLE  `main_database`." + "`" +table_name + "`" + "FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'")
     connection.execute(import_query,fp=file_path,tn=table_name) #execute file import to table
     
-def query(db_name,table_name, connection):
-    table_fetch_query = text("SELECT * FROM " + db_name + '.' + table_name + " LIMIT 30")
+def query(db_name,table_name, connection, offset_val=0):
+    table_fetch_query = text("SELECT * FROM " + db_name + '.' + table_name + " LIMIT 30 OFFSET :of")
     columns_fetch_query = text("""SELECT `COLUMN_NAME` 
                                 FROM `INFORMATION_SCHEMA`.`COLUMNS` 
                                 WHERE `TABLE_SCHEMA`=:dn 
                                 AND `TABLE_NAME`=:tn""")
     col_names = connection.execute(columns_fetch_query, dn= db_name, tn=table_name).fetchall()
     col_names_refined = [item for t in col_names for item in t]
-    result = connection.execute(table_fetch_query)
+    result = connection.execute(table_fetch_query,of=offset_val)
     reduced_result = result.fetchall()
 
     return col_names_refined,  reduced_result
