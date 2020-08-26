@@ -13,13 +13,15 @@ class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QMessageBo
     
     def uploadFile(self):
         file = QtWidgets.QFileDialog.getOpenFileName(self,"Select a file","default","Spreadsheet(*.csv)") # make this only csv
-        if file in (None,''):
+        
+        if file[0] or file[1] in (None,''):
             return
         else:
            #file dialog to ask user for table name for the upladed csv
             test = QtWidgets.QInputDialog(self)
             test.resize(400,400)
             tname,ok = test.getText(self,"Input Table Name", "Enter Name of the table")
+            
             if ok and tname not in (None,''):
                 upload_file(file[0],connection,tname)
             
