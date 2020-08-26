@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.sql import text
+from sqlalchemy.exc import SQLAlchemyError
 import pandas as pd 
 from Database import creds
 import agate
@@ -10,15 +11,22 @@ import ast
 def connect():
     connection_str = 'mysql://{}:{}@{}:{}/{}?charset=utf8'.format(creds.uname,creds.pwd,creds.server,creds.port,creds.database)
     engine = create_engine(connection_str)
+    
     connection = engine.connect()
     return connection
 
 #creating query for table creation 
 def upload_file(file_path, connection, table_name):
-    table_csv = agate.Table.from_csv(file_path) #create a var for table_name later
-    table_create_query = table_csv.to_sql_create_statement(table_name= table_name, dialect= "mysql", db_schema= "main_database")
-    print(table_create_query)
-    connection.execute(table_create_query)  #excute table  creation
+
+    #check if table already exists
+    tables_fetch_query = text("""SHOW TABLES LIKE :tn """)
+    tables = connection.execute(tables_fetch_query,tn=table_name).fetchall() #checking is table already exists
+    
+    if len(tables) == 0:
+        table_csv = agate.Table.from_csv(file_path) #create a var for table_name later
+        table_create_query = table_csv.to_sql_create_statement(table_name= table_name, dialect= "mysql", db_schema= "main_database")
+        
+        connection.execute(table_create_query)  #excute table  creation
     import_query = text("LOAD DATA LOCAL INFILE :fp INTO TABLE  `main_database`." + "`" +table_name + "`" + "FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'")
     connection.execute(import_query,fp=file_path,tn=table_name) #execute file import to table
     
