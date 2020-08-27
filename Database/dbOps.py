@@ -19,15 +19,14 @@ def connect():
 def upload_file(file_path, connection, table_name):
 
     #check if table already exists
-    tables_fetch_query = text("""SHOW TABLES LIKE :tn """)
-    tables = connection.execute(tables_fetch_query,tn=table_name).fetchall() #checking is table already exists
+    tables_fetch = table_names("main_database",connection)
     
-    if len(tables) == 0:
+    if table_name not in tables_fetch:      #checking if table already exists
         table_csv = agate.Table.from_csv(file_path) #create a var for table_name later
         table_create_query = table_csv.to_sql_create_statement(table_name= table_name, dialect= "mysql", db_schema= "main_database")
         
         connection.execute(table_create_query)  #excute table  creation
-    import_query = text("LOAD DATA LOCAL INFILE :fp INTO TABLE  `main_database`." + "`" +table_name + "`" + "FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'")
+    import_query = text("LOAD DATA LOCAL INFILE :fp INTO TABLE  `main_database`." + "`" +table_name + "`" + "FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES")
     connection.execute(import_query,fp=file_path,tn=table_name) #execute file import to table
     
 def query(db_name,table_name, connection, offset_val=0):
