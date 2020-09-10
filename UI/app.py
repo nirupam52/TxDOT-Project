@@ -30,7 +30,7 @@ class MainWindow(QtWidgets.QMainWindow, QtWidgets.QStackedWidget, Ui_MainWindow,
         self.stackedWidget.setCurrentWidget(self.ispe_page)
     def showViewDbPage(self):
         self.stackedWidget.setCurrentWidget(self.viewDb_page)
-        self.showTable(tabName="crashes_charges")
+        #self.showTable(tabName="crashes_charges")
 
         
         

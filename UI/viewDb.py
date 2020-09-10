@@ -68,6 +68,7 @@ class ViewDB(QtWidgets.QFileDialog, QtWidgets.QTableWidget, QtWidgets.QMessageBo
         self.tableWidget.setRowCount(0)
         self.tableWidget.setRowCount(len(res))
         self.tableWidget.setColumnCount(len(cname))
+        print(res)
         self.tableWidget.setHorizontalHeaderLabels(cname)
         
         for rownum, rowdat in enumerate(res):
